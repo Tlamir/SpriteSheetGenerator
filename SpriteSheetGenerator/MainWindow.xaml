@@ -1,0 +1,43 @@
+﻿<Window x:Class="SpriteSheetGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Sprite Sheet Generator" Height="500" Width="900" Background="#2B2B2B">
+    <Grid Margin="20">
+        <!-- File Selection -->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Button x:Name="btnLoadImages" Content="Load Images" Width="120" Height="40" 
+                    Margin="0,0,10,0" Background="#FF464646" Foreground="White" FontWeight="Bold" 
+                    Click="BtnLoadImages_Click"/>
+            <TextBlock Text="Columns:" VerticalAlignment="Center" Foreground="White" Margin="0,0,10,0"/>
+            <TextBox x:Name="txtColumns" Width="50" Height="23" Margin="0,0,20,0" Text="4" TextAlignment="Center"/>
+            <TextBlock Text="Format:" VerticalAlignment="Center" Foreground="White" Margin="0,0,10,0"/>
+            <ComboBox x:Name="cmbFormat" Width="100" Height="23" Margin="0,0,20,0" SelectedIndex="0">
+                <ComboBoxItem Content="PNG" />
+                <ComboBoxItem Content="JSON" />
+            </ComboBox>
+            <Button x:Name="btnGenerateSpriteSheet" Content="Generate Sprite Sheet" Width="200" Height="40" 
+                    Margin="0,0,10,0" Background="#FF464646" Foreground="White" FontWeight="Bold" 
+                    Click="BtnGenerateSpriteSheet_Click"/>
+            <Button x:Name="btnDeleteSelected" Content="Delete Selected" Width="150" Height="40" 
+                    Background="#FF464646" Foreground="White" FontWeight="Bold" 
+                    Click="BtnDeleteSelected_Click"/>
+        </StackPanel>
+
+        <!-- Image Preview -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="0,60,0,30">
+            <WrapPanel x:Name="wrapPanelImages" Orientation="Horizontal" Background="#FF3E3E3E" 
+                       Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"
+                       Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"/>
+        </ScrollViewer>
+
+        <!-- Footer -->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,10">
+            <TextBlock Text="Yigithan Guven - " Foreground="White" FontSize="12"/>
+            <TextBlock FontSize="12">
+    <Hyperlink NavigateUri="https://github.com/Tlamir/SpriteSheetGenerator" Foreground="LightBlue" RequestNavigate="Hyperlink_RequestNavigate">
+        GitHub
+    </Hyperlink>
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>
